@@ -2,13 +2,19 @@
     font-family: 'Oswald', sans-serif;
 }
 
+body {
+    background-color: #0D3B66;
+    color: #faf0ca;
+}
+
 
 header{
     display: flex;
     justify-content: center;
     padding: 10px;
-    background-color: rgb(42, 42, 238);
-    color: white;
+    background-image: linear-gradient( #0D3B66, #faf0ca, #f4d35e);
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 4px #b6ba90;
 }
 
 .row {
@@ -24,48 +30,89 @@ header{
 }
 
 #input-city {
-    flex-basis: 90%;
+    flex-basis: 100%;
     flex-shrink: 1;
     min-width: 20px;
 
 }
 
 .search-container {
-    margin-top: 20px;
-    height: 800px;
+    margin-top: 30px;
+    height: 600px;
+    margin: 30px;
+    border: 2px solid #ee964b;
+    flex: 2
 }
 
 .weather-container{
     flex-direction: column;
-    padding-left: 0px;
     margin-top: 20px;
-}
-
-.weather-container > * {
-    flex-basis: 40%; 
-    padding: 10px;
+    margin-right: 20px;
+    flex:7;
+    min-height: 90vh;
 }
 
 .current-day {
-    border: 10px black;
+    border: 2px solid #ee964b;
+    margin: 10px;
+    padding: 20px;
 }
 
 .current-day > * {
     margin-bottom: 30px;
 }
+
 #submit-city {
     padding: 0px 5px 
 }
 
 .custom-border {
-    margin-left: 5px;
+    margin: 10px;
     padding: 10px;
+    border-bottom: 2px solid #ee964b;
 }
 
 .saved-city-buttons {
     margin: 10px;
+    padding: 10px;
+    gap: 10px
+
+}
+
+.saved-city-buttons > * {
+    padding: 5px;
+}
+
+.five-day{
+    border: 2px solid #ee964b;
+    margin: 10px;
+    padding: 10px;
     gap: 10px
 }
+
+.futureday {
+    flex: 1;
+    min-width: 150px;
+    padding: 5px;
+    color: black;
+    margin: 5px 0px;
+    background-image: linear-gradient(#faf0ca, #f4d35e);
+}
+
+.custom-btn {
+    background-color: #f4d35e;
+}
+
+.custom-btn:hover {
+    background-color: #faf0ca;
+    transition: ease-in-out 0.3s;
+}
+
+#five-day-head{
+    position: relative;
+    left: 30px;
+}
+
 
 
 

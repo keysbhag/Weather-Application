@@ -19,39 +19,83 @@
         <h1> Weather Dashboard </h1>
     </header>
 
-    <main class="row d-flex">
-        <aside class="search-container col-4 align-items-lg-stretch">
-            <div class="border-bottom border-dark custom-border">
+    <main class="row d-flex justify-content-around">
+        <aside class="search-container">
+            <div class="custom-border">
                 <h2 class="text-center"> Search For a City:</h3>
                 <div class="d-flex justify-content-center input-section">
                     <input type="text" id="input-city" placeholder="Enter a city">
-                    <input type="submit" id="submit-city" value="Search">
+                    <input type="submit" id="submit-city" class="custom-btn btn" value="Search">
                 </div>
             </div>
 
             <div class="saved-city-buttons d-flex flex-column">
-                <button> Yeerr</button>
-                <button> Yeerr</button>
-                <button> Yeerr</button>
-                <button> Yeerr</button>
-                <button> Yeerr</button>
-                <button> Yeerr</button>
-                <button> Yeerr</button>
+                <button class="btn custom-btn"> Yeerr</button>
+                <button class="btn custom-btn"> Yeerr</button>
+                <button class="btn custom-btn"> Yeerr</button>
+                <button class="btn custom-btn"> Yeerr</button>
+                <button class="btn custom-btn"> Yeerr</button>
+
 
 
             </div>
         </aside>
 
-        <section class="weather-container col-8 d-flex">
-            <div class="current-day border border-dark">
+        <section class="weather-container d-flex">
+
+            <div class="current-day">
                 <h2> Toronto </h2>
                 <p> Temp: Mad Cold </p>
                 <p> Wind: Super Windy </p>
                 <p> Humidity: None Still </p>
                 <p> UV Index: whats that </p>
             </div>
-            <div class="five-day">
-                yup
+
+            <h2 id="five-day-head"> Five Day Forecast: </h2>
+
+            <div class="five-day row d-flex">
+
+
+                <div class="futureday d-flex flex-column">
+                    <h4> Date: </h4>
+                    <p class="weather-icon"> </p>
+                    <p> Temp: </p>
+                    <p> Wind: </p>
+                    <p> Humidty: </p>
+                </div>
+
+                <div class="futureday d-flex flex-column">
+                    <h4> Date: </h4>
+                    <p class="weather-icon"> </p>
+                    <p> Temp: </p>
+                    <p> Wind: </p>
+                    <p> Humidty: </p>
+                </div>
+
+                <div class="futureday d-flex flex-column">
+                    <h4> Date: </h4>
+                    <p class="weather-icon"> </p>
+                    <p> Temp: </p>
+                    <p> Wind: </p>
+                    <p> Humidty: </p>
+                </div>
+
+                <div class="futureday d-flex flex-column">
+                    <h4> Date: </h4>
+                    <p class="weather-icon"> </p>
+                    <p> Temp: </p>
+                    <p> Wind: </p>
+                    <p> Humidty: </p>
+                </div>
+
+                <div class="futureday d-flex flex-column">
+                    <h4> Date: </h4>
+                    <p class="weather-icon"> </p>
+                    <p> Temp: </p>
+                    <p> Wind: </p>
+                    <p> Humidty: </p>
+                </div>
+
             </div>
 
         </section>
