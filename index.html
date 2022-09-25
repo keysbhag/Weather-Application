@@ -44,11 +44,11 @@
         <section class="weather-container d-flex">
 
             <div class="current-day">
-                <h2> Toronto </h2>
-                <p> Temp: Mad Cold </p>
-                <p> Wind: Super Windy </p>
-                <p> Humidity: None Still </p>
-                <p> UV Index: whats that </p>
+                <h2 id="current-name"> Toronto </h2>
+                <p id="current-icon"><img id="cicon" src="" alt="weather icon"></p>
+                <p id="current-temp"> Temp: Mad Cold </p>
+                <p id="current-wind"> Wind: Super Windy </p>
+                <p id="current-humid"> Humidity: None Still </p>
             </div>
 
             <h2 id="five-day-head"> Five Day Forecast: </h2>
@@ -56,44 +56,24 @@
             <div class="five-day row d-flex">
 
 
-                <div class="futureday d-flex flex-column">
-                    <h4> Date: </h4>
-                    <p class="weather-icon"> </p>
-                    <p> Temp: </p>
-                    <p> Wind: </p>
-                    <p> Humidty: </p>
+                <div class="futureday d-flex flex-column" id="day0">
+
                 </div>
 
-                <div class="futureday d-flex flex-column">
-                    <h4> Date: </h4>
-                    <p class="weather-icon"> </p>
-                    <p> Temp: </p>
-                    <p> Wind: </p>
-                    <p> Humidty: </p>
+                <div class="futureday d-flex flex-column" id="day1">
+
                 </div>
 
-                <div class="futureday d-flex flex-column">
-                    <h4> Date: </h4>
-                    <p class="weather-icon"> </p>
-                    <p> Temp: </p>
-                    <p> Wind: </p>
-                    <p> Humidty: </p>
+                <div class="futureday d-flex flex-column" id="day2">
+
                 </div>
 
-                <div class="futureday d-flex flex-column">
-                    <h4> Date: </h4>
-                    <p class="weather-icon"> </p>
-                    <p> Temp: </p>
-                    <p> Wind: </p>
-                    <p> Humidty: </p>
+                <div class="futureday d-flex flex-column" id="day3">
+
                 </div>
 
-                <div class="futureday d-flex flex-column">
-                    <h4> Date: </h4>
-                    <p class="weather-icon"> </p>
-                    <p> Temp: </p>
-                    <p> Wind: </p>
-                    <p> Humidty: </p>
+                <div class="futureday d-flex flex-column" id="day4">
+
                 </div>
 
             </div>
@@ -105,8 +85,10 @@
 
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

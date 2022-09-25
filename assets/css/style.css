@@ -49,7 +49,7 @@ header{
     margin-top: 20px;
     margin-right: 20px;
     flex:7;
-    min-height: 90vh;
+    min-height: 80vh;
 }
 
 .current-day {
@@ -60,6 +60,10 @@ header{
 
 .current-day > * {
     margin-bottom: 30px;
+}
+
+#current-icon {
+    display: none;
 }
 
 #submit-city {
@@ -87,16 +91,18 @@ header{
     border: 2px solid #ee964b;
     margin: 10px;
     padding: 10px;
-    gap: 10px
+    gap: 10px;
 }
 
 .futureday {
+    flex-wrap: wrap;
     flex: 1;
-    min-width: 125px;
+    min-width: 150px;
     padding: 5px;
     color: black;
     margin: 5px 0px;
     background-image: linear-gradient(#faf0ca, #f4d35e);
+    max-width: auto;
 }
 
 .custom-btn {
@@ -112,6 +118,14 @@ header{
     position: relative;
     left: 30px;
 }
+
+/* @media screen and (min-width: 548px){
+    
+    .weather-container{
+        margin-right: 70px;
+    }
+
+} */
 
 
 
