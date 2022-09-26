@@ -1,7 +1,7 @@
 let apiKey = "9f5a9921cd73711ba79db2276c17c5e3";
 
 let inputCity = $('#input-city');
-let submitCity = $('#submit-city');
+let submitCity = $('#tags');
 let inputCountry = $('#input-country');
 
 let currentCity = $('#current-name');

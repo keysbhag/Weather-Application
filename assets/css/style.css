@@ -126,6 +126,9 @@ header{
     left: 30px;
 }
 
+.ui-help-hidden-accessible{
+    display: none;
+}
 /* @media screen and (min-width: 548px){
     
     .weather-container{
