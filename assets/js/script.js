@@ -11,10 +11,16 @@ let currentHumid = $('#current-humid');
 let currentUVindex = $('#current-uvindex');
 
 function getCurrentWeather(city) {
-    let requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+apiKey+'&units=metric'
+    let requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+apiKey+'&units=metric';
 
     fetch(requestUrl)
         .then(function(response){
+            if (response.status != 200) {
+                alert("Request entered is not valid")
+
+                return;
+            }
+            
             return response.json();
         }) 
         .then(function(data) {
@@ -24,7 +30,7 @@ function getCurrentWeather(city) {
             let iconUrl = "http://openweathermap.org/img/w/" +cIcon+ ".png";
             let currentDate = moment().format("M/D/YYYY");
 
-            currentCity.text(data.name + ' ' + currentDate);
+            currentCity.text(data.name+', '+data.sys.country+ ' ' + currentDate);
             $('#cicon').attr('src',iconUrl);
             document.getElementById('current-icon').style.display = 'block';
             currentTemp.text("Temperature: "+data['main'].temp+' °C');
@@ -41,6 +47,11 @@ function getFiveDayForecast(city) {
 
     fetch(requestUrl)
         .then(function(response){
+            if (response.status != 200) {
+                alert("Request entered is not valid")
+
+                return;
+            }
             return response.json();
         })
         .then(function(data) {
@@ -90,12 +101,12 @@ function getFiveDayForecast(city) {
                 addDay.append(dayWind);
                 addDay.append(dayHumid);
             }
-
-
         })
-
 }
 
+function geoCoding () {
+    let requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}';
+}
 
 
 submitCity.on('click', function() {
