@@ -30,10 +30,13 @@ header{
 }
 
 #input-city {
-    flex-basis: 100%;
-    flex-shrink: 1;
     min-width: 20px;
+    flex: 2;
 
+}
+
+#input-country {
+    width: 15%;
 }
 
 .search-container {
@@ -92,6 +95,10 @@ header{
     margin: 10px;
     padding: 10px;
     gap: 10px;
+}
+
+#b0, #b1 ,#b2, #b3, #b4 {
+    display: none;
 }
 
 .futureday {
