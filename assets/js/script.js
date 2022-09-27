@@ -13,6 +13,8 @@ let currentWind = $('#current-wind');
 let currentHumid = $('#current-humid');
 let currentUVindex = $('#current-uvindex');
 
+let cityButtons = $('.save-btns');
+
 // Stores the saved city buttons in an array for easier manipulation in local storage
 let storedButtons = [];
 
@@ -95,7 +97,7 @@ function getFiveDayForecast(city, country) {
                 }
 
                 // Sets all the context for each of the 5 day forecast cards
-                let dIcon = splitWeather[i][1].weather[0].icon;
+                let dIcon = splitWeather[i][0].weather[0].icon;
                 let diconUrl = "http://openweathermap.org/img/w/" +dIcon+ ".png";
 
                 let date = $('#'+i.toString()+'a');
@@ -132,7 +134,7 @@ function createNewButton(city, country) {
 
     // Adds text and classes to button
     newButton.text(newButtonValue);
-    newButton.addClass('btn custom-btn');
+    newButton.addClass('btn custom-btn save-btns');
 
     // Goes through current stored buttons, if the value entered equals any of the current buttons, we don't create the button
     for (let i = 0; i < storedButtons.length; i++) {
@@ -166,7 +168,7 @@ function init() {
         let newButton = $('<button>');
 
         newButton.text(storedButtons[i]);
-        newButton.addClass('btn custom-btn');
+        newButton.addClass('btn custom-btn save-btns');
         
         $('#add-btns').append(newButton);
     }
@@ -182,15 +184,30 @@ submitCity.on('click', function(event) {
     if (!inputCountry.val() || !inputCity.val()) {
         return 0;
     }
+
+    // Makes sure to only take the 2 character code of the country
     let initialCountry = inputCountry.val().trim();
     let country = initialCountry.substring(0,2);
 
     getCurrentWeather(city, country);
     getFiveDayForecast(city, country);
 
-    inputCity.val(' ');
-    inputCountry.val(' ');
+    // Sets inputs back to empty
+    inputCity.val('');
+    inputCountry.val('');
 });
+
+$('#add-btns').on('click', function(event){
+    event.preventDefault()
+
+    let buttonVal = event.target.innerHTML;
+    let buttonCity = buttonVal.split(',')[0];
+    let buttonCountry = buttonVal.split(', ')[1];
+
+    getCurrentWeather(buttonCity, buttonCountry);
+    getFiveDayForecast(buttonCity, buttonCountry);
+});
+
 
 // Used to initialize the page before the user can use the page
 init();
