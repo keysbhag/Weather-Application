@@ -4,24 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Style sheet for autocomplete Jquery Widget -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- Style sheet for Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Reset style sheet -->
     <link rel="stylesheet" href="./assets/css/reset.css">
+    <!-- Favicon for webpage head -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☀️</text></svg>">
+    <!-- Bootstrap library stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Primary Style Sheet -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Forecast</title>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
         <h1> Weather Dashboard </h1>
     </header>
 
+    <!-- Main body content -->
     <main class="row d-flex justify-content-around">
+
+        <!-- Container for inputting city, country as well as submit button. Generated buttons are stored below the form-->
         <aside class="search-container">
+
+            <!-- Form for input -->
             <div class="custom-border">
                 <h2 class="text-center"> Search For a City:</h3>
                 <form class="d-flex justify-content-center input-section">
@@ -31,13 +43,16 @@
                 </form>
             </div>
 
+            <!-- Newly generated buttons are created and stored here -->
             <div class="saved-city-buttons d-flex flex-column" id="add-btns">
 
             </div>
         </aside>
 
+        <!-- Container displays current weather data and 5 day forecast -->
         <section class="weather-container d-flex">
 
+            <!-- Current day weather container -->
             <div class="current-day">
                 <h2 id="current-name"> City Name </h2>
                 <p id="current-icon"><img id="cicon" src="" alt="weather icon"></p>
@@ -46,6 +61,7 @@
                 <p id="current-humid"> Humidity:</p>
             </div>
 
+            <!-- 5 Day forecast container -->
             <h2 id="five-day-head"> Five Day Forecast: </h2>
 
             <div class="five-day-container row d-flex">
