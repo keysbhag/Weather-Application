@@ -20,8 +20,11 @@ let storedButtons = [];
 
 // function takes the entered city and country and pulls the current weather data for that city
 function getCurrentWeather(city, country) {
-    let requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+', '+country+'&appid='+apiKey+'&units=metric';
+    let requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+','+country+'&appid='+apiKey+'&units=metric';
 
+    if (requestUrl == 'https://api.openweathermap.org/data/2.5/weather?q=,&appid='+apiKey+'&units=metric') {
+        return 0;
+    }
     // fetch sends a request for the data and returns it in json format
     fetch(requestUrl)
         .then(function(response){
@@ -60,7 +63,11 @@ function getCurrentWeather(city, country) {
 // function takes the inputted city and country and returns data for 5 days forecast from the current day
 function getFiveDayForecast(city, country) {
 
-    let requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+', '+country+'&appid='+apiKey+'&units=metric';
+    let requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+','+country+'&appid='+apiKey+'&units=metric';
+
+    if (requestUrl === 'https://api.openweathermap.org/data/2.5/forecast?q=,&appid='+apiKey+'&units=metric') {
+        return 0;
+    }
 
     fetch(requestUrl)
         .then(function(response){
@@ -181,7 +188,7 @@ submitCity.on('click', function(event) {
 
     let city = inputCity.val().trim();
     // makes sure city and country values are not null
-    if (!inputCountry.val() || !inputCity.val()) {
+    if (!inputCountry.val() || !inputCity.val() ) {
         return 0;
     }
 
