@@ -1,7 +1,9 @@
+/* Sets universal font to be a google font */
 * {
     font-family: 'Oswald', sans-serif;
 }
 
+/* This is the base color pallette for my website */
 :root{
     --Blue: #0D3B66;
     --Banana: #faf0ca;
@@ -9,11 +11,12 @@
     --Orange: #ee964b;
 }
 
+/* Sets the background color of the body of the page */
 body {
     background-color: #0D3B66;
     color: #faf0ca;
 }
-
+/* Customizes header */ 
 header{
     display: flex;
     justify-content: center;
@@ -23,8 +26,17 @@ header{
     text-shadow: 2px 4px #b6ba90;
 }
 
+/* Lets the rows of current and five day forecast take 100% of the screen view */
 .row {
     height: 100%;
+}
+
+/* Tags below style the input and saved button section of the page */
+.search-container {
+    height: 600px;
+    margin: 30px;
+    border: 2px solid var(--Orange);
+    flex: 2
 }
 
 .input-section {
@@ -37,26 +49,41 @@ header{
 
 #input-city {
     min-width: 20px;
-    flex: 2;
+    flex: 2;   
+}
 
+#submit-city {
+    padding: 0px 5px 
+}
+
+.saved-city-buttons {
+    margin: 10px;
+    padding: 10px;
+    gap: 10px
+}
+
+.custom-btn {
+    background-color: var(--Yellow);
+}
+
+.custom-btn:hover {
+    background-color: var(--Banana);
+    transition: ease-in-out 0.3s;
+}
+
+.saved-city-buttons > * {
+    padding: 5px;
 }
 
 #input-country {
     width: 15%;
 }
 
-.search-container {
-    margin-top: 30px;
-    height: 600px;
-    margin: 30px;
-    border: 2px solid var(--Orange);
-    flex: 2
-}
-
+/* Tags below style the weather container where the current weather and 5 day forecast is stored */
 .weather-container{
     flex-direction: column;
     margin-top: 20px;
-    margin-right: 20px;
+    margin-right: 25px;
     flex:7;
     min-height: 80vh;
 }
@@ -75,35 +102,20 @@ header{
     display: none;
 }
 
-#submit-city {
-    padding: 0px 5px 
-}
-
 .custom-border {
     margin: 10px;
     padding: 10px;
     border-bottom: 2px solid var(--Orange);
 }
 
-.saved-city-buttons {
-    margin: 10px;
-    padding: 10px;
-    gap: 10px
-
-}
-
-.saved-city-buttons > * {
-    padding: 5px;
-}
-
-.five-day{
+.five-day-container{
     border: 2px solid var(--Orange);
     margin: 10px;
     padding: 10px;
     gap: 10px;
 }
 
-#b0, #b1 ,#b2, #b3, #b4 {
+#b0, #b1 ,#b2, #b3, #b4 { /* Sets the icon displays in the 5 day forecast */
     display: none;
 }
 
@@ -118,22 +130,23 @@ header{
     max-width: auto;
 }
 
-.custom-btn {
-    background-color: var(--Yellow);
-}
-
-.custom-btn:hover {
-    background-color: var(--Banana);
-    transition: ease-in-out 0.3s;
-}
-
 #five-day-head{
     position: relative;
     left: 30px;
 }
 
+/* Used to adjust screen proportions in mobile view */
+@media screen and (max-width: 500px) {
+    
+    .weather-container{
+        margin-right: 0px;
 
+    }
 
+    header {
+        width: 100% ;
+    }
+}
 
 
 

@@ -95,7 +95,7 @@ function getFiveDayForecast(city, country) {
                 }
 
                 // Sets all the context for each of the 5 day forecast cards
-                let dIcon = splitWeather[i][6].weather[0].icon;
+                let dIcon = splitWeather[i][1].weather[0].icon;
                 let diconUrl = "http://openweathermap.org/img/w/" +dIcon+ ".png";
 
                 let date = $('#'+i.toString()+'a');
@@ -116,13 +116,13 @@ function getFiveDayForecast(city, country) {
         })
 }
 
-// function geoCoding () {
+// function geoCoding () {----------------------
 //     let requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}';
 // }
 
 // function giveURL() {
 
-// }
+// }--------------------------
 
 // function creates a new button for searched cities as long as the city hasn't already been made
 function createNewButton(city, country) {
@@ -182,10 +182,14 @@ submitCity.on('click', function(event) {
     if (!inputCountry.val() || !inputCity.val()) {
         return 0;
     }
-    let country = inputCountry.val().trim();
+    let initialCountry = inputCountry.val().trim();
+    let country = initialCountry.split('-')[0];
 
     getCurrentWeather(city, country);
     getFiveDayForecast(city, country);
+
+    inputCity.val(' ');
+    inputCountry.val(' ');
 });
 
 // Used to initialize the page before the user can use the page
