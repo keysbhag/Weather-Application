@@ -13,8 +13,6 @@ let currentWind = $('#current-wind');
 let currentHumid = $('#current-humid');
 let currentUVindex = $('#current-uvindex');
 
-let cityButtons = $('.save-btns');
-
 // Stores the saved city buttons in an array for easier manipulation in local storage
 let storedButtons = [];
 
@@ -22,6 +20,7 @@ let storedButtons = [];
 function getCurrentWeather(city, country) {
     let requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+','+country+'&appid='+apiKey+'&units=metric';
 
+    // Makes sure just a comma isn't sent as a URL request 
     if (requestUrl == 'https://api.openweathermap.org/data/2.5/weather?q=,&appid='+apiKey+'&units=metric') {
         return 0;
     }
@@ -40,7 +39,6 @@ function getCurrentWeather(city, country) {
         }) 
         // Put the json in an object called data
         .then(function(data) {
-            console.log(data)
 
             // Sets all the values in the respective text containers
             let cIcon = data['weather'][0].icon;
@@ -65,6 +63,7 @@ function getFiveDayForecast(city, country) {
 
     let requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+','+country+'&appid='+apiKey+'&units=metric';
 
+    // Makes sure just a comma isn't sent as a URL request
     if (requestUrl === 'https://api.openweathermap.org/data/2.5/forecast?q=,&appid='+apiKey+'&units=metric') {
         return 0;
     }
@@ -79,7 +78,6 @@ function getFiveDayForecast(city, country) {
             return response.json();
         })
         .then(function(data) {
-            console.log(data)
 
             // gets the list of 40 arrays, which is 5 days of weather forecasts split into three hour intervals
             let dataList = data.list;
@@ -90,7 +88,6 @@ function getFiveDayForecast(city, country) {
             for (let i = 0; i < dataList.length; i += 8){
                 splitWeather.push(dataList.slice(i, i + 8));
             }
-            console.log(splitWeather);
 
             // Uses for loop logic to create a bucket for Temperature, Wind Speeds, and Humidity, sums all 8 values in them and gets the mean for them.
             for (let i = 0; i < splitWeather.length; i++) {

@@ -9,8 +9,6 @@ $.getJSON('https://pkgstore.datahub.io/core/country-list/data_json/data/8c458f2d
     });
 });
 
-console.log(data);
-
 // Uses Jquery autocomplete function to source data from the data array
 $("#input-country").autocomplete({
     source: data
