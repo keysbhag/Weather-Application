@@ -30,7 +30,7 @@ This is the look of my Weather application
 
 This is the wire frame design
 
-![Large overview of Wire frame](./assets/images/)
+![Large overview of Wire frame](./assets/images/WeatherAppWireFrame.png)
 
 ## Deployed Application
 
@@ -50,9 +50,9 @@ Server Side API's:
 
 Third Party API's: 
 
-Autocomplete function: https://jqueryui.com/autocomplete/#default
+* Autocomplete function: https://jqueryui.com/autocomplete/#default
 
-Some Styling: https://getbootstrap.com/
+* Some Styling: https://getbootstrap.com/
 
 ## License
 

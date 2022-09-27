@@ -11,7 +11,6 @@ let currentIcon = $('#current-icon');
 let currentTemp = $('#current-temp');
 let currentWind = $('#current-wind');
 let currentHumid = $('#current-humid');
-let currentUVindex = $('#current-uvindex');
 
 // Stores the saved city buttons in an array for easier manipulation in local storage
 let storedButtons = [];
@@ -33,13 +32,11 @@ function getCurrentWeather(city, country) {
                 return;
             } else {
                 createNewButton(city, country);
-            }
-            
+            }            
             return response.json();
         }) 
         // Put the json in an object called data
         .then(function(data) {
-
             // Sets all the values in the respective text containers
             let cIcon = data['weather'][0].icon;
             let iconUrl = "http://openweathermap.org/img/w/" +cIcon+ ".png";
@@ -51,7 +48,7 @@ function getCurrentWeather(city, country) {
             document.getElementById('current-icon').style.display = 'block';
 
             currentTemp.text("Temperature: "+data['main'].temp+' °C');
-            currentWind.text('Wind: '+data['wind'].speed+' km/h');
+            currentWind.text('Wind: '+data['wind'].speed+' m/s');
             currentHumid.text('Humidity: '+data['main'].humidity+'%');
 
         })
@@ -60,7 +57,6 @@ function getCurrentWeather(city, country) {
 
 // function takes the inputted city and country and returns data for 5 days forecast from the current day
 function getFiveDayForecast(city, country) {
-
     let requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+','+country+'&appid='+apiKey+'&units=metric';
 
     // Makes sure just a comma isn't sent as a URL request
@@ -106,6 +102,7 @@ function getFiveDayForecast(city, country) {
 
                 let date = $('#'+i.toString()+'a');
 
+                // Gets id tags for text containers that required values and stores them in variables
                 let iconIMG = $('#icon'+i.toString());
                 let dayTemp = $('#'+i.toString()+'c');
                 let dayWind = $('#'+i.toString()+'d');
@@ -115,20 +112,12 @@ function getFiveDayForecast(city, country) {
                 iconIMG.attr('src',diconUrl);
                 document.getElementById('b'+i.toString()).style.display = 'block';
                 dayTemp.text("Temp: "+(avgTempDay/8)+' °C');
-                dayWind.text("Wind: "+(avgWindSpeed/8)+' km/h');
+                dayWind.text("Wind: "+(avgWindSpeed/8)+' m/s');
                 dayHumid.text("Humidity: "+(avgHumid/8)+'%');
 
             }
         })
 }
-
-// function geoCoding () {----------------------
-//     let requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}';
-// }
-
-// function giveURL() {
-
-// }--------------------------
 
 // function creates a new button for searched cities as long as the city hasn't already been made
 function createNewButton(city, country) {
