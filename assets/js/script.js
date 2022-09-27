@@ -183,7 +183,7 @@ submitCity.on('click', function(event) {
         return 0;
     }
     let initialCountry = inputCountry.val().trim();
-    let country = initialCountry.split('-')[0];
+    let country = initialCountry.substring(0,2);
 
     getCurrentWeather(city, country);
     getFiveDayForecast(city, country);
