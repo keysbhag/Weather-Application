@@ -11,6 +11,8 @@ let currentWind = $('#current-wind');
 let currentHumid = $('#current-humid');
 let currentUVindex = $('#current-uvindex');
 
+let storedButtons = [];
+
 function getCurrentWeather(city, country) {
     let requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+city+', '+country+'&appid='+apiKey+'&units=metric';
 
@@ -20,12 +22,16 @@ function getCurrentWeather(city, country) {
                 alert("Request entered is not valid")
 
                 return;
+            } else {
+                createNewButton(city, country);
             }
             
             return response.json();
         }) 
         .then(function(data) {
             console.log(data)
+
+
 
             let cIcon = data['weather'][0].icon;
             let iconUrl = "http://openweathermap.org/img/w/" +cIcon+ ".png";
@@ -77,7 +83,7 @@ function getFiveDayForecast(city, country) {
                     avgHumid = avgHumid + parseInt(dailyWeather[i][j].main.humidity);
                 }
 
-                let dIcon = dailyWeather[i][0].weather[0].icon;
+                let dIcon = dailyWeather[i][6].weather[0].icon;
                 let diconUrl = "http://openweathermap.org/img/w/" +dIcon+ ".png";
 
                 let date = $('#'+i.toString()+'a');
@@ -98,13 +104,63 @@ function getFiveDayForecast(city, country) {
         })
 }
 
-function geoCoding () {
-    let requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}';
+// function geoCoding () {
+//     let requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}';
+// }
+
+// function giveURL() {
+
+// }
+
+function createNewButton(city, country) {
+    let newButton = $('<button>');
+    let repeatCount = 0;
+    let newButtonValue = (city+', '+country)
+
+    newButton.text(newButtonValue);
+    newButton.addClass('btn custom-btn');
+
+    for (let i = 0; i < storedButtons.length; i++) {
+        if (newButtonValue.toUpperCase() == storedButtons[i].toUpperCase()) {
+            repeatCount++;
+        }
+    }
+    console.log(repeatCount);
+
+    if (repeatCount > 0) {
+        return;
+    } else{
+        
+        $('#add-btns').append(newButton);
+        storedButtons.push(newButtonValue);
+        localStorage.setItem('storedButtons', JSON.stringify(storedButtons));
+    }
+}
+
+function init() {
+    let storedCities = JSON.parse(localStorage.getItem("storedButtons"));
+
+    console.log(storedCities);
+
+    if (storedCities !== null){
+        storedButtons = storedCities;
+    }
+
+    for (let i = 0; i < storedButtons.length; i++) {
+        let newButton = $('<button>');
+
+        newButton.text(storedButtons[i]);
+        newButton.addClass('btn custom-btn');
+        
+        $('#add-btns').append(newButton);
+    }
+
 }
 
 
 submitCity.on('click', function(event) {
     event.preventDefault();
+
     let city = inputCity.val().trim();
 
     if (!inputCountry.val()) {
@@ -116,6 +172,8 @@ submitCity.on('click', function(event) {
     getCurrentWeather(city, country);
     getFiveDayForecast(city, country);
 });
+
+init();
 
 
 
