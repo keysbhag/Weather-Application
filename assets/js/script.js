@@ -141,7 +141,7 @@ function createNewButton(city, country) {
     }
     // else create the button and store it in local storage
     else{
-        $('#add-btns').append(newButton);
+        $('#add-btns').prepend(newButton);
         storedButtons.push(newButtonValue);
         localStorage.setItem('storedButtons', JSON.stringify(storedButtons));
     }
@@ -163,9 +163,17 @@ function init() {
         newButton.text(storedButtons[i]);
         newButton.addClass('btn custom-btn save-btns');
         
-        $('#add-btns').append(newButton);
+        $('#add-btns').prepend(newButton);
     }
 
+}
+
+function clearSavedCities() {
+    for (let i = 0; i < storedButtons.length; i++) {
+        $('.save-btns').remove();
+    }
+    window.localStorage.removeItem('storedButtons')
+    document.location.reload();
 }
 
 // When the search button is clicked it calls the functions needed to populate the current and 5 day forecast
@@ -201,6 +209,9 @@ $('#add-btns').on('click', function(event){
     getFiveDayForecast(buttonCity, buttonCountry);
 });
 
+$('.reset').on('click', function(event) {
+    clearSavedCities();
+})
 
 // Used to initialize the page before the user can use the page
 init();

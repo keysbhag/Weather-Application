@@ -79,6 +79,12 @@ header{
     width: 15%;
 }
 
+.reset{
+    width: 30%;
+    margin-top: 10px;
+
+}
+
 /* Tags below style the weather container where the current weather and 5 day forecast is stored */
 .weather-container{
     flex-direction: column;
